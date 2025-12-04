@@ -1,1 +1,158 @@
-<!doctype html><html><body><h1>DJC Final Site Ready</h1></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Divyajyoti Creations — Trusted Partner in Petrochemical Excellence</title>
+  <meta name="description" content="Divyajyoti Creations — Petrochemical supplies, warehousing and bitumen distribution." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <div class="logo"><img src="assets/logo.png" alt="DJC Logo"></div>
+          <div class="brand-text">
+            <div class="company">Divyajyoti Creations</div>
+            <div class="tagline">Trusted Partner in Petrochemical Excellence</div>
+          </div>
+        </div>
+        <nav>
+          <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+          <ul id="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#why">Why Us</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#manufacturing">Manufacturing</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact" class="cta">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="home">
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Reliable Bitumen &amp; Petrochemical Supply</h1>
+        <p>Supply, storage and distribution of paving grade bitumen and related products across Karnataka and beyond.</p>
+        <div class="hero-actions">
+          <a class="cta" href="#contact">Enquire Now</a>
+          <a class="ghost" href="#products">Our Products</a>
+        </div>
+      </div>
+      <div class="hero-right card">
+        <div class="img-placeholder" data-label="Hero image - upload your photo"></div>
+        <h3>What we do</h3>
+        <p class="muted">We supply VG grades, emulsions and specialty modified bitumen to construction and industrial customers.</p>
+        <a href="#why" class="link-more">Read more →</a>
+      </div>
+    </section>
+
+    <section id="why">
+      <h2>Why Divyajyoti Creations</h2>
+      <p class="muted">A focused team with reliable supply chain, quality checks and timely delivery.</p>
+      <ul class="bullets muted">
+        <li>Locally stocked inventory for faster dispatch</li>
+        <li>Strict quality control and testing</li>
+        <li>Flexible quantities for wholesale buyers</li>
+      </ul>
+    </section>
+
+    <section id="products">
+      <h2>Our Products</h2>
+      <div class="products-grid">
+        <div class="product card"><strong>VG-30 / VG-40</strong><div class="muted">Paving Grade Bitumen</div></div>
+        <div class="product card"><strong>Bitumen Emulsions</strong><div class="muted">RS-1, MS-1, SS-1</div></div>
+        <div class="product card"><strong>LDO</strong></div>
+        <div class="product card"><strong>CRMB</strong></div>
+        <div class="product card"><strong>PMB</strong></div>
+      </div>
+    </section>
+
+    <section id="manufacturing">
+      <h2>Manufacturing &amp; Quality</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h4>Warehousing</h4>
+          <p class="muted">Temperature-controlled tanks and safe storage for bitumen products.</p>
+        </div>
+        <div class="card">
+          <h4>Logistics</h4>
+          <p class="muted">Specialised transport for safe and timely deliveries.</p>
+        </div>
+        <div class="card">
+          <h4>Quality Assurance</h4>
+          <p class="muted">Routine testing and industry-standard QA before dispatch.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <div class="img-placeholder" data-label="Gallery image 1 - upload"></div>
+        <div class="img-placeholder" data-label="Gallery image 2 - upload"></div>
+        <div class="img-placeholder" data-label="Gallery image 3 - upload"></div>
+        <div class="img-placeholder" data-label="Gallery image 4 - upload"></div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <h2>Testimonials</h2>
+      <div class="testi">
+        <div class="item card"><strong>Client A</strong><p class="muted">Reliable supply and good communication.</p></div>
+        <div class="item card"><strong>Client B</strong><p class="muted">Quality products and timely delivery.</p></div>
+        <div class="item card"><strong>Client C</strong><p class="muted">Professional service and good follow-up.</p></div>
+      </div>
+    </section>
+
+    <section id="updates">
+      <h2>Updates</h2>
+      <div class="card"><strong>Coming soon</strong><p class="muted">New product launches and news will appear here.</p></div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-top muted">Phone: 9342627000 / 9035773763 &nbsp; | &nbsp; Email: <a href="mailto:info@divyajyoticreations.com">info@divyajyoticreations.com</a></div>
+      <div class="contact-grid">
+        <div>
+          <h3>Get in touch</h3>
+          <p class="muted">Send your enquiry and our team will contact you shortly.</p>
+          <form id="contactForm">
+            <input type="text" name="name" id="name" placeholder="Your name" required>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+            <input type="text" name="phone" id="phone" placeholder="Phone (optional)">
+            <textarea name="message" id="message" placeholder="Message" required></textarea>
+            <button class="btn" type="submit">Send Enquiry</button>
+            <div id="formStatus" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+        <div class="address card">
+          <h4>Our Office</h4>
+          <address>
+            Divyajyoti Creations<br>
+            19-1-25/53, Siddhakunj, 2nd Floor, 4th Cross<br>
+            Kuvempu Nagar, New Adarsh Colony<br>
+            Bidar – 585401, Karnataka, India
+          </address>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>© Divyajyoti Creations 2025</div>
+      <div class="muted">Phone: 9342627000 / 9035773763</div>
+      <div class="muted">info@divyajyoticreations.com</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
