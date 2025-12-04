@@ -1,1 +1,43 @@
-function toggleMenu(){const m=document.getElementById('menu');if(!m) return; if(m.style.display==='flex') m.style.display='none'; else m.style.display='flex';m.style.flexDirection='column'; m.style.background='linear-gradient(180deg, rgba(255,255,255,0.02), transparent)'; m.style.padding='12px'; m.style.borderRadius='8px'; }document.addEventListener('DOMContentLoaded', function(){const form=document.getElementById('contactForm'); const status=document.getElementById('formStatus');form.addEventListener('submit', function(e){ e.preventDefault(); status.textContent='Sending...';const name=document.getElementById('name').value.trim(); const email=document.getElementById('email').value.trim(); const phone=document.getElementById('phone').value.trim(); const message=document.getElementById('message').value.trim();fetch('https://script.google.com/macros/s/AKfycbzSwBIL4cSIFfXInrWlxwYDuS75PyDkp59bvl6O2HcpSR2TGAWdCLoYcpr6oJiM2NK0/exec', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: name, email: email, phone: phone, message: message }) }).then(r => r.json()).then(res => { if(res.status === 'success' || res.result === 'success'){ status.textContent='Thanks — your enquiry has been received.'; form.reset(); } else { status.textContent='Submission received.'; form.reset(); } }).catch(err => { console.error(err); status.textContent='Error sending message. Please try again later.'; });}); });
+function toggleMenu(){
+  const m = document.getElementById('menu');
+  if(!m) return;
+  if(m.style.display==='flex') m.style.display='none'; else m.style.display='flex';
+  m.style.flexDirection='column';
+  m.style.background='rgba(255,255,255,0.95)';
+  m.style.padding='12px';
+  m.style.borderRadius='8px';
+}
+document.addEventListener('DOMContentLoaded', function(){
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    status.textContent = 'Sending...';
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    fetch("https://script.google.com/macros/s/AKfycbzSwBIL4cSIFfXInrWlxwYDuS75PyDkp59bvl6O2HcpSR2TGAWdCLoYcpr6oJiM2NK0/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, email, phone, message })
+    })
+    .then(r => r.json())
+    .then(res => {
+      if(res.status === 'success' || res.result === 'success') {
+        status.textContent = 'Thanks — your enquiry has been received.';
+        form.reset();
+      } else {
+        status.textContent = 'Submission received.';
+        form.reset();
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      status.textContent = 'Error sending message. Please try again later.';
+    });
+  });
+});
