@@ -17,27 +17,20 @@ document.addEventListener('DOMContentLoaded', function(){
     const email = document.getElementById('email').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const message = document.getElementById('message').value.trim();
-
-    fetch("https://script.google.com/macros/s/AKfycbzSwBIL4cSIFfXInrWlxwYDuS75PyDkp59bvl6O2HcpSR2TGAWdCLoYcpr6oJiM2NK0/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbzSwBIL4cSlIFXlnrWlxwYDuS75PyDkp59bvI6O2HcpSR2TGAGWdCLoYcpr6oJiM2N0/exec", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      mode: "no-cors",
       body: JSON.stringify({ name, email, phone, message })
     })
-    .then(r => r.json())
-    .then(res => {
-      if(res.status === 'success' || res.result === 'success') {
+      .then(() => {
+        // We can't read the response in no-cors mode, but the request was sent
         status.textContent = 'Thanks — your enquiry has been received.';
         form.reset();
-      } else {
-        status.textContent = 'Submission received.';
-        form.reset();
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      status.textContent = 'Error sending message. Please try again later.';
+      })
+      .catch(err => {
+        console.error(err);
+        status.textContent = 'Error sending message. Please try again later.';
+      });
     });
   });
 });
