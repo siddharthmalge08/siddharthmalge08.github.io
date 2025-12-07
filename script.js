@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const phone = document.getElementById('phone').value.trim();
     const message = document.getElementById('message').value.trim();
 
-    fetch("https://script.google.com/macros/s/AKfycbzSwBIL4cSIFfXInrWlxwYDuS75PyDkp59bvl6O2HcpSR2TGAWdCLoYcpr6oJiM2NK0/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbzSwBIL4cSlIFXtnrWlxwYDuS75PyDkp59bvI6O2HcpSR2TGAGWdCLoYcpr6oJiM2N0/exec", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
