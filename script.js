@@ -11,40 +11,23 @@ function toggleMenu() {
   m.style.borderRadius = '8px';
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
-
-  if (!form) return;
-
-  form.addEventListener('submit', function (e) {
+document.getElementById("contact-form").addEventListener("submit", function(e) {
     e.preventDefault();
-    status.textContent = 'Sending...';
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const message = document.getElementById('message').value.trim();
+    const formData = new FormData(this);
 
     fetch("https://script.google.com/macros/s/AKfycbzNaZyte3H8Jv0noY6A3AMCi254UWdnUwIo3q6H5ww3wesvfzHzNy0bIbRoj3d6d-Vl/exec", {
-      method: "POST",
-    mode: "no-cors",
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: new URLSearchParams({
-        name: name,
-        email: email,
-        phone: phone,
-        message: message
+        method: "POST",
+        body: formData,   // ⬅️ prevents CORS preflight
+        mode: "no-cors"   // ⬅️ required for Apps Script
     })
-})
-.then(() => {
-    statusEl.textContent = "Your enquiry has been sent successfully.";
-})
-.catch(err => {
-    console.error(err);
-    statusEl.textContent = "Error sending message. Please try again later.";
-});
-  });
+    .then(() => {
+        document.getElementById("status").textContent =
+            "Your enquiry has been sent successfully.";
+    })
+    .catch(err => {
+        console.error(err);
+        document.getElementById("status").textContent =
+            "Error sending message. Please try again later.";
+    });
 });
