@@ -12,7 +12,6 @@ function toggleMenu() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
 
@@ -21,11 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         statusEl.textContent = "Sending...";
 
+        // Convert form data to URLSearchParams (GAS understands this)
         const formData = new FormData(form);
+        const params = new URLSearchParams(formData);
 
         fetch("https://script.google.com/macros/s/AKfycbzNaZyte3H8Jv0noY6A3AMCi254UWdnUwIo3q6H5ww3wesvfzHzNy0bIbRoj3d6d-Vl/exec", {
             method: "POST",
-            body: formData,
+            body: params,   // NOT formData
             mode: "no-cors"
         })
         .then(() => {
@@ -37,5 +38,4 @@ document.addEventListener("DOMContentLoaded", function () {
             statusEl.textContent = "Error sending message. Please try again later.";
         });
     });
-
 });
