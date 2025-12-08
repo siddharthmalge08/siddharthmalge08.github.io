@@ -12,30 +12,36 @@ function toggleMenu() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
 
-    form.addEventListener("submit", function (e) {
+    form.addEventListener("submit", function(e) {
         e.preventDefault();
 
         statusEl.textContent = "Sending...";
 
-        // Convert form data to URLSearchParams (GAS understands this)
         const formData = new FormData(form);
-        const params = new URLSearchParams(formData);
+        const params = new URLSearchParams();
+
+        formData.forEach((value, key) => {
+            params.append(key, value);
+        });
 
         fetch("https://script.google.com/macros/s/AKfycbzNaZyte3H8Jv0noY6A3AMCi254UWdnUwIo3q6H5ww3wesvfzHzNy0bIbRoj3d6d-Vl/exec", {
             method: "POST",
-            body: params,   // NOT formData
+            body: params,  // THIS is the key change
             mode: "no-cors"
         })
         .then(() => {
             statusEl.textContent = "Your enquiry has been sent successfully.";
             form.reset();
         })
-        .catch((error) => {
-            console.log(error);
+        .catch(err => {
+            console.error(err);
             statusEl.textContent = "Error sending message. Please try again later.";
         });
     });
+
 });
+
