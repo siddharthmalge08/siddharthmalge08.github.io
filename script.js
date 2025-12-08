@@ -11,23 +11,31 @@ function toggleMenu() {
   m.style.borderRadius = '8px';
 }
 
-document.getElementById("contact-form").addEventListener("submit", function(e) {
-    e.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
 
-    const formData = new FormData(this);
+    const form = document.getElementById("contactForm");
+    const statusEl = document.getElementById("formStatus");
 
-    fetch("https://script.google.com/macros/s/AKfycbzNaZyte3H8Jv0noY6A3AMCi254UWdnUwIo3q6H5ww3wesvfzHzNy0bIbRoj3d6d-Vl/exec", {
-        method: "POST",
-        body: formData,   // ⬅️ prevents CORS preflight
-        mode: "no-cors"   // ⬅️ required for Apps Script
-    })
-    .then(() => {
-        document.getElementById("status").textContent =
-            "Your enquiry has been sent successfully.";
-    })
-    .catch(err => {
-        console.error(err);
-        document.getElementById("status").textContent =
-            "Error sending message. Please try again later.";
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        statusEl.textContent = "Sending...";
+
+        const formData = new FormData(form);
+
+        fetch("https://script.google.com/macros/s/AKfycbzNaZyte3H8Jv0noY6A3AMCi254UWdnUwIo3q6H5ww3wesvfzHzNy0bIbRoj3d6d-Vl/exec", {
+            method: "POST",
+            body: formData,
+            mode: "no-cors"
+        })
+        .then(() => {
+            statusEl.textContent = "Your enquiry has been sent successfully.";
+            form.reset();
+        })
+        .catch((error) => {
+            console.log(error);
+            statusEl.textContent = "Error sending message. Please try again later.";
+        });
     });
+
 });
