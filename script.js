@@ -28,24 +28,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     fetch("https://script.google.com/macros/s/AKfycbzNaZyte3H8Jv0noY6A3AMCi254UWdnUwIo3q6H5ww3wesvfzHzNy0bIbRoj3d6d-Vl/exec", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, email, phone, message })
+    mode: "no-cors",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: new URLSearchParams({
+        name: name,
+        email: email,
+        phone: phone,
+        message: message
     })
-      .then(r => r.json())
-      .then(res => {
-        if (res.status === 'success' || res.result === 'success') {
-          status.textContent = 'Thanks — your enquiry has been received.';
-          form.reset();
-        } else {
-          status.textContent = 'Submission received.';
-          form.reset();
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        status.textContent = 'Error sending message. Please try again later.';
-      });
+})
+.then(() => {
+    statusEl.textContent = "Your enquiry has been sent successfully.";
+})
+.catch(err => {
+    console.error(err);
+    statusEl.textContent = "Error sending message. Please try again later.";
+});
   });
 });
